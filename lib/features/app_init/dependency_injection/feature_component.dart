@@ -58,7 +58,8 @@ void _configureMvp() {
         ..registerFactory<AppInitNavigator>(
           () => AppInitNavigator(getIt()),
         )
-        ..registerFactoryParam<AppInitPresentationModel, AppInitInitialParams, dynamic>(
+        ..registerFactoryParam<AppInitPresentationModel, AppInitInitialParams,
+            dynamic>(
           (params, _) => AppInitPresentationModel.initial(params),
         )
         ..registerFactoryParam<AppInitPresenter, AppInitInitialParams, dynamic>(

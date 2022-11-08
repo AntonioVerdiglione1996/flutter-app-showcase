@@ -12,6 +12,9 @@ class LogInUseCase {
 
   final UserStore _userStore;
 
+  static const int _kMilliseconds = 500;
+  static const int _kMultiplier = 2;
+
   Future<Either<LogInFailure, User>> execute({
     required String username,
     required String password,
@@ -21,9 +24,12 @@ class LogInUseCase {
     }
 
     if (!isUnitTests) {
-      //TODO simulation of network request
-      //ignore: no-magic-number
-      await Future.delayed(Duration(milliseconds: 500 + Random().nextInt(1000)));
+      await Future.delayed(
+        Duration(
+          milliseconds:
+              _kMilliseconds + Random().nextInt(_kMilliseconds * _kMultiplier),
+        ),
+      );
     }
 
     if (username == 'test' && password == 'test123') {
